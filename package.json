@@ -16,8 +16,5 @@
     "url": "https://github.com/jabrown85/fn-tester/issues"
   },
   "homepage": "https://github.com/jabrown85/fn-tester#readme",
-  "dependencies": {
-    "@projectriff/message": "^1.0.0",
-    "cloudevents-sdk": "^0.3.0"
-  }
+  "dependencies": {}
 }
