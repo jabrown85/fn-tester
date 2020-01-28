@@ -1,0 +1,10 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or the definition README at
+// https://github.com/microsoft/vscode-dev-containers/tree/master/containers/docker-existing-dockerfile
+{
+	"name": "Debug",
+	"image": "heroku/functions-buildpacks:latest",
+	"appPort": 8080,
+	"workspaceMount": "type=bind,src=${localWorkspaceFolder},dst=/workspace",
+	"workspaceFolder": "/workspace/",
+	"extensions": []
+}

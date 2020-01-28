@@ -16,5 +16,7 @@
     "url": "https://github.com/jabrown85/fn-tester/issues"
   },
   "homepage": "https://github.com/jabrown85/fn-tester#readme",
-  "dependencies": {}
+  "dependencies": {
+    "@heroku/salesforce-sdk": "0.0.1-develop.10"
+  }
 }
