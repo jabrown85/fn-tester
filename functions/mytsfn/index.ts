@@ -1,7 +1,7 @@
-const sdk = require('@salesforce/salesforce-sdk');
+import { InvocationEvent, Context, Logger } from '@salesforce/salesforce-sdk';
 
 /**
- * Describe Myfn here.
+ * Describe Mytsfn here.
  *
  * The exported method is the entry point for your code when the function is invoked.
  *
@@ -12,6 +12,6 @@ const sdk = require('@salesforce/salesforce-sdk');
  * @param logger:  logging handler used to capture application logs and traces specific
  *                 to a given execution of a function.
  */
-module.exports = function (event, context, logger) {
-    logger.info(`Invoking Myfn with payload ${JSON.stringify(event.data || {})}`);
+export default async function execute(event: InvocationEvent, context: Context, logger: Logger): Promise<any> {
+    logger.info(`Invoking Mytsfn with payload ${JSON.stringify(event.data || {})}`);
 }
