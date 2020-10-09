@@ -12,6 +12,20 @@ const sdk = require('@salesforce/salesforce-sdk');
  * @param logger:  logging handler used to capture application logs and traces specific
  *                 to a given execution of a function.
  */
-module.exports = function (event, context, logger) {
+module.exports = async function (event, context, logger) {
     logger.info(`Invoking Myfn with payload ${JSON.stringify(event.data || {})}`);
+
+    const acct = new sdk.SObject('Account');
+    const name = event.data.AccountToCreate__c || 'MyAccount'
+    acct.setValue('Name', `${name}-${Date.now()}`);
+    const insertResult = await context.org.data.insert(acct);
+    logger.info(JSON.stringify(insertResult));
+
+    // Query Accounts to verify that our new Account was created.
+    const fields = event.data.fields ? event.data.fields.join(', ') : 'Id, Name, CreatedDate'
+    const soql = `SELECT ${fields} FROM Account ORDER BY CreatedDate DESC LIMIT 5`;
+    logger.info(soql);
+    const queryResults = await context.org.data.query(soql);
+    logger.info(JSON.stringify(queryResults));
+    return queryResults
 }
